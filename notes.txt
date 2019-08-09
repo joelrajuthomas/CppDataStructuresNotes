@@ -1,0 +1,786 @@
+
+OVERLOADING
+-----------
+
+Backus Naur form
+
+left side should always be one variable and right side should hold expressions.
+for example
+    x = 2 + 2
+not
+    2 + 2 = x
+
+void main()
+{
+    Daytype today(1,18,2019);
+    cout << today;
+}
+
+
+friend istream & operator >> (istream & nissa, daytype &o)
+{
+    nissa >> o.month;
+    niss.ignore(1);
+}
+
+TEMPLATES
+---------
+
+Template <class T>
+T add(T x, T y)
+{
+    return x+y;
+}
+ or 
+Template <class T,class F>
+T add(T x, F y)
+{
+    return x+y;
+}
+
+____________________________________________________________
+Jan 22nd Tuesday
+
+Pointers
+
+pointers are usually HEXadecimal in reference to memory addresses.
+this address will lead us to a variable 
+
+pointer can point to int char student
+
+shadow copying int *p = &a
+                   *q = &a
+shadow copying saves the address of a to p and q
+
+int a = 10;
+int *p = &a;
+cout <<a;  //slow access to 10 because we have to search all our memory addresses
+cout <<*p;   // fast access to 10 because we are going straight to the value of a
+// this is called the static pointer .........
+
+
+p = new int; //dynamic
+this saves 4 bytes of memory and allocates that memory address for p to use.
+so now p has an address associated to it without any value.
+
+*p = 10
+*p += 100;
+cout << *p;
+delete p;  // deletes the memory address of p.
+p = 0; //resetting value of the pointer same as setting to NULL
+p = new int[5]; //now p holds the adress of the first element of a int[5] array. 
+//dynamic 
+
+delete [] p;
+
+//heap? what is it?
+its a part of memory used for dynamic allocations.
+
+int *q = new int[5]; //q = address of first int in array
+
+int **p; //array of pointer
+p = new int *[16]; //p = array of int pointers
+// so there is 16 cells in p, and each cell contains an array.
+
+we can set p[0] = new int[7]; and continue to allocate memory in this array style.
+
+
+_________________________________________________________________
+Jan 24th 
+
+
+
+//LINKED LISTS EXAMPLE 
+struct st
+{
+    char name [10]; //char * name
+    float gpa;
+    st * another;
+};
+
+int main(int argc, const char * argv[])
+{
+    st *first;
+
+    first = new st;
+    first->name = "joel"
+    first->gpa = 3.0;
+    first->another = new st;
+    
+    st * second = first->another;
+    second->name = "george"
+    second->gpa = 2.0;
+    second->another = new st;
+
+    st * third = second->another;
+    third->name = "kenny";
+    third->gpa = 1.0;
+    third->another = nullptr;
+
+
+    return 0;
+}
+
+program for creating a line through linked listsL
+
+to identify the line, fine the first point of the line.
+
+so we need a pointer to the first point in the line.
+
+class line
+{
+    private:
+    point * head;
+
+    public:
+    line();
+    void insert();
+    void delete();
+    void search();
+    void print();
+}
+
+**look at extra 1 4 8
+
+
+
+****Jan  31*****
+BELOW **** Extra 1,5,1 
+
+create the doubly linked list just like last time bbut just for 
+insert
+delete
+search 
+print
+
+Write a function to traverse a list forward
+
+struct nb{
+    nb * prev;
+    nb * next;
+    int v; //contents of node
+}
+
+class counting
+{
+private:
+    nb *head;
+    nb *tail;
+
+public:
+    counting()
+    {
+        head = tail = 0;
+        bool isempty()
+        {
+            return(head == 0 ? 1:0)
+        }
+    }
+    void traverseForward()
+    {
+        nb * current = head; //head defined in class
+        while(current->next != 0)
+        {
+            cout << current->v << endl; //just printing contents
+            current = current->next;
+        }
+    }
+
+    void traverseBackwards()
+    {
+        nb * current = tail;
+        while(current->prev != 0)
+        {
+            cout << current->v << endl;
+            current = current->prev;
+        }
+    }
+
+    void insertAtBeg(int value)
+    {
+
+    }
+}
+
+
+____________________________________________________________ 
+
+circular LL -> last node points to the beginning //tail->next = head
+single LL only traverse forward
+doubly LL travers both forward and backwards
+
+doubly linked list
+
+
+
+EXAM QUESTIONS TOPICS - EXAM ON THURSDAY 8:00AM (EARLY)
+____________________________________________________________
+no circular 
+
+Part 1: Pointers and arrays (10 points) (3 questions)
+
+array, pointer arithmetic & *, dynamic arrays 
+
+Part 2:  Linked List and DDL (DLL) ADT(30 Points)
+
+question is to write a function // Practicing program extras will get you readdy for it//
+
+Struct player{
+    int nbb;
+    int age;
+    int min;
+    Player *next;
+    Player *prev;
+}
+ // above might be a similar siituation
+*practice how to pass pointer to a function and how to return a pointer
+ learn how to pass the struct player as a parameter (just like the sorting in hw2)
+
+Part 3: (30 points)
+Insertion
+Selectrion
+Bubble
+Merge
+Quicksort
+HeapSort
+
+
+For quicksort and Heap it will just be conceptual just like how taught in class. 
+(Building a heap and we're asked for maximum or minimum heap and we solve)
+
+For Insertion, Selection, Bubble, Merge
+We will be asked to implement it so //practice that
+
+Part 4: Big O (30 points)
+Heavily Linked to sorting
+Know Worst Average and Best Cases for each sorting method
+powerpoint week 4 called sortingbig ON
+
+theres an extra 50 500000 900000 count swaps- comparisons, print clock
+
+compare the times of the sorting from above.
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+recursion is always
+
+void recursive f(int arg)
+
+if(cond)
+    constant --> no more calling on recursive function
+
+else
+    cakk sane function by changing parameter/argument
+
+
+NO FOR LOOPS OR WHILE LOOPS
+
+5*3 in a recursive function
+
+int mult(int a, int b)
+{
+    //return a*b;
+    a+a+a+a+a == b times;
+
+}
+int mult(int a, int b)
+{
+    if(b==1)
+    return a;
+    else 
+    return a+mult(a, b-1) //5 + 5 + (b == 1 return 5) = 15
+}
+
+
+merge sorting
+
+array of 8
+2 arrays of 4
+4 arrays of 2
+8 arrays of 1
+
+
+_________________________________________________________________
+tuesday review
+
+
+what is bubble sort or what is the time complexity of bubble sort in its 3 situations
+
+for sorting: 
+
+when the array is already sorted = it is in  its best Case
+
+space complexity = complexity in terms of size of what we are sorting
+
+Last questions on the time will be about space and time complexities.
+
+*if the array is sorted, the sorting will be in its best case.
+
+EXAM PROBLEM VVVVVVVVVVV
+
+//we will write a function with arguments array and size, and return a pointer to array
+//array is always pass by reference
+int  *exa(int *, int size)  //void exa(int a[], int size)
+{
+    int *p = a;
+    for(int i = 0; i < size; i++)
+    {
+        *a += 1;
+        a++;
+    }
+    return p;
+}
+void exa(int a[], int size)          //because array is pass by referencem the array is gonna be updated regardless of not returning or returning.
+{ 
+    for(int i = 0; i < size; i++)
+    {
+        a[i] += 1;
+    }
+}
+
+Quick Sort 
+
+
+0 1 2 3 4 5  6 7
+5 7 8 3 1 11 6 22
+
+1. we want to take the middle and pivot
+
+0 + 7 /2 = 3 <--- pivot position
+
+2. swap pivot w end
+
+0 1 2 3  4 5  6 3
+5 7 8 22 1 11 6 3
+i->             <-j
+3. j-- i++
+
+if 3 is less than anything then j stops
+
+is 3 is greater than 3 swap
+
+    0 1 2 3  4 5  6 3
+    5 7 8 22 1 11 6 3
+i-->5        1<=------j
+
+swap 5 and 1
+
+    0 1 2 3  4 5  6 3
+    1 7 8 22 5 11 6 3
+    1<-------<=------j
+i----->7
+
+since i and j cross, swap i and 3 (7 and 3)
+
+    0 1 2 3  4 5  6 3
+    1 3 8 22 5 11 6 7
+
+and continue and so forth.
+
+
+Heap Sort -- minimum heap
+
+size/2 = 4
+
+so 4 -> is what we heapify (check if child is greater than parent)
+
+                5
+        7               8
+    3       1       11      6
+22
+root 4 = 3 is less than 22 check
+root 3 = 8 is greater than 6 so swap
+root 2 = 7 is greater than 1 so swap
+
+                5
+        1               6
+    3       7       11      8
+22
+
+now we need to heapify on root
+
+swap 1 and 22, and cut 1. 
+
+                5
+        22               6
+    3       7       11      8
+-----cut
+1
+
+swap 6 and 8 so and cut
+
+
+
+
+
+
+
+
+
+---------------------
+February 26th
+
+STACKS
+
+struct nb{
+    nb *prev;
+    int v;
+    nv *next;
+}
+
+class STACKS{
+    private:
+        nb * top;
+    public:
+        stack();
+        bool isempty();
+        void push(int x);
+        void pop(int &);
+        void removeall(); //write a recursive function to pop all elements.
+        void print();
+        
+}
+
+void STACKS::push(int x)
+{
+    nb * temp = new nb;
+    if(top == NULL)
+    {
+        temp = 
+    }
+}
+
+void STACKS::pop()
+{
+    nb * temp = new nb;
+    if(top == NULL)
+    {
+        temp = 
+    }
+}
+
+
+____________________________________ (WEEK BEFORE TEST)
+
+
+TEST 2 Topics. 
+
+heavy recursion
+
+---------------
+
+priority queue
+
+if is empty, its O(1)
+
+if not, O(n)
+
+
+--------------------------------------------
+March 26th
+
+bool search(int *a, int size, int key)
+
+//while(number is not found && number is not at end)
+
+build heap
+heapify 
+heap swap
+
+understand these three functions
+
+queueing system queustion: waiting time program.
+
+
+recursion eh
+stack check
+queue  check
+priority queue eh
+HeapSort hell no
+DRAW TREES******** omg
+
+
+----------------------------------------------------------
+April 2nd.
+
+Binary TREES
+
+depth vs height of binary tree 
+
+         17
+    4          2
+8     5   7
+            9
+
+            in this, the maximum distance to the bottom ooof the root, we call the height.
+
+Binary Tree Traversal.
+
+Visit the node first
+OR
+Visit the Subtrees
+
+Inorder traversal - Leftside Node Rightside
+
+ex.
+        L17 17 R17
+    L4 4 R4 17   L2 2 R2
+8 4 5       17       7 R7 2
+8 4 5 17 7 9 2 FINAL
+
+so in our final we can see if we follow the numbers from the original pattern in a left to right from bottom up bottom fashion
+
+
+Preorder traversal - node all left all right
+
+            17->4->8->5->2->7->9 is final 
+
+Postorder traversal - Left, Right, Node
+
+8->5->4->9->7->2->17
+
+
+ON FINAL EXAM -> structure of
+template <class elemType>
+void inorder(binaryTreeNode<elemType> *p) const
+{
+    if(p = != NULL)
+    {
+        inorder(p->llink);
+        cout << p->info << " ";
+        inorder(p->rlink);
+    }
+}
+template <class elemType>
+void preorder(binaryTreeNode<elemType> *p) const
+{
+    if(p = != NULL)
+    {
+        cout << p->info << " ";
+        preeorder(p->llink);
+        preorder(p->rlink);
+    }
+}
+template <class elemType>
+void postorder(binaryTreeNode<elemType> *p) const
+{
+    if(p = != NULL)
+    {
+        postorder(p->llink);
+        postorder(p->rlink);
+        cout << p->info << " ";
+    }
+}
+
+Binary Trees PowerPoint // page 14 is good final exam questions
+
+
+
+BINARY SEARCH TREES
+the difference is that the values lower than the node is put to the left and values higher than the node are on the right
+
+to delete a node with two leafs we replace that ndoe with the minimum of the right side of that node/
+if a node just has one leaf we bring that leaf to the nodes spot and remove the old node.
+
+To find maximum, we just keep going to the right in our tree.
+to find minumum, we just keep going to the left in our tree.
+
+WE CANNOT ADD DUPLICATE NUMBERS in this tree
+
+
+_____________
+NOW B TREES!
+
+not the same as binary Trees
+
+we have a structure
+
+(pointer to values less than 17) - 17 - (pointers to values between 17/25) - 25 - (pointer to values above 25)
+
+this is often called a 2.3 structure (2 values 3 pointers.
+
+so the ponters point to dynamic struct's that also point to other structs.
+
+____________________________________
+April 9th
+
+today is a questions on the final exam
+
+
+what to know on the tree
+min of tree
+max of tree
+insert to Tree
+delete from tree 
+count the nodes on tree
+height of node
+depth of a node
+bf - balance factor of a node // number of leaves on left - right of node
+
+
+example of inserting 1 then 2 then 3 
+
+1 
+ \
+   2 
+    \
+     3
+
+     problem is that we have root = 1; we need to have 2 be the balanced root. 
+
+we need to rotate everything left.
+
+    2 
+  /   \
+1       3
+
+
+example If we insert 3, 2, 1
+
+    3
+  /
+ 2
+/
+1
+
+we need to rotate to the right
+
+
+        2
+     /     \
+    1        3
+
+    we need to have an algorythim that balances While inserting 
+
+
+    ********
+    example of inserting 1 then 2 then 3 
+
+1 //root
+ \
+   2 //root->right
+    \
+     3 //root->right->right
+
+Now we need 
+
+    2 //root
+  /   \
+1 //root->left 3 //root-> right
+
+Example code of rotatng left
+node * leftrotate(node *oldroot) //this returns our new root
+{
+    node *newroot = oldroot->right;
+    newroot->left = oldroot
+    newroot->left->right = oldroooot->right->left;
+    return newroot;
+}
+
+// when balance factor >= 2 then we have a problem at that node and we need to rotate.
+
+for this example
+this is a RL
+50 //old root
+    \   
+      59
+    /
+  58
+
+for zig zag pattern
+  void 
+  {
+      single right rotation (node 59)
+      single left rootation( node 50)
+  }
+q
+  for this opposite pattern
+
+        40
+       /
+    20
+     \
+      25
+
+we do the opposite
+void
+{
+    single left rotation(node 20)
+    single right rotation(node)
+}
+
+
+April 16th--------------------------------------------------------
+
+Binary tree ADT, insert delete search etc...
+
+    graphing*
+array of pointers, each node has a linked list of adjacent nodes;
+
+private data members is array of pointers;
+
+
+class graph{
+    private:
+        node = p;
+        int node;
+    public:
+        isequal()
+        insert()
+        delete()
+        search()
+        traversal()
+
+}
+
+void graph::search() //searching for a node in the graph.
+{
+
+}
+
+extra fill double graph filled with 0s and practice filling in graph with 1s based on pointer node;
+
+
+__________________________________________________________
+FINAL EXAM
+Part 1-  Linked List 20 Points .....Average
+2 Functions writing code
+
+Part 2- Big O Sorting 10 Points
+
+Part 3- Queue 10 points
+One function write code... easy
+
+Part 4: Tree 30 points
+4 question coding ... 3 question like tracing and insert BST AVL (20 points)
+4th question coding ... average 10 points 
+
+Code written for BST , not done in notebook
+Avl nothing done yet
+
+Part 5: graph 20 points
+BFS - DFS - MST - Dijkestra // no coding for MST or Dijkestra - DONE
+
+Part 6: Hashing  10 points - DONE
+
+________________________________
+
+done = done in notebook
+__________________________
+
+April 23rd
+
+Greedy Algorithms, when we make a choice to make an algorithm right now.
+Similar to recursion
+
+MST (minimum spanning tree) - Finding the minimum weight spanning a tree. so reducing paths if another faster path occurs
+
+Kruskel algorithym based on edges. O(n^2 )
+Prim algorythm: travel smallest edge, then travel total smallest edge until we get to target)
+
+Dijkestra/Shortest path
+Single-Source shortest path problem
+exactly like prims, but every time i find the shortest path, im going to add the weiight to it.
+
+
+
+
